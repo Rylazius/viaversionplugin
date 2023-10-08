@@ -2,8 +2,8 @@
   "required": true,
   "minVersion": "0.7.5",
   "compatibilityLevel": "JAVA_8",
-  "package": "de.florianmichael.viaforge.mixin.impl",
-  "refmap": "mixins.viaforge.refmap.json",
+  "package": "net.minusmc.viaversionplugin.injection.mixins",
+  "refmap": "viaforge.mixins.refmap.json",
   "mixins": [
     "MixinNetworkManager",
     "MixinNetworkManager_5"

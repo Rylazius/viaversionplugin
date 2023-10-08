@@ -34,7 +34,7 @@ minecraft {
     runDir = "run"
     mappings = "stable_22"
     makeObfSourceJar = false
-    clientJvmArgs += ["-Dfml.coreMods.load=de.florianmichael.viaforge.mixin.MixinLoader"]
+    clientJvmArgs += ["-Dfml.coreMods.load=net.minusmc.viaversionplugin.injection.ViaVersionTransformerLoader"]
 }
 
 sourceSets {
@@ -101,17 +101,17 @@ classes.dependsOn(moveResources)
 
 jar {
     manifest.attributes(
-        "MixinConfigs": "mixins.viaforge.json",
+        "MixinConfigs": "viaforge.forge.mixin.json",
         "tweakClass": "org.spongepowered.asm.launch.MixinTweaker",
         "TweakOrder": 0,
-        "FMLCorePluginContainsFMLMod": "de.florianmichael.viaforge.mixin.MixinLoader"
+        "FMLCorePluginContainsFMLMod": "net.minusmc.viaversionplugin.injection.ViaVersionTransformerLoader"
     )
 
     enabled = false
 }
 
 mixin {
-    add sourceSets.main, "mixins.viaforge.refmap.json"
+    add sourceSets.main, "viaforge.mixins.refmap.json"
 }
 
 shadowJar {

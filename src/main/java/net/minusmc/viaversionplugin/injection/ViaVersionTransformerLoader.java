@@ -24,12 +24,11 @@ import org.spongepowered.asm.mixin.Mixins;
 
 import java.util.Map;
 
-public class MixinLoader implements IFMLLoadingPlugin {
+public class ViaVersionTransformerLoader implements IFMLLoadingPlugin {
 
-    public MixinLoader() {
-        System.out.println("Starting MixinBootstrap from IFMLLoadingPlugin");
+    public ViaVersionTransformerLoader() {
         MixinBootstrap.init();
-        Mixins.addConfiguration("mixins.viaforge.json");
+        Mixins.addConfiguration("viaforge.forge.mixin.json");
         MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);
     }
 

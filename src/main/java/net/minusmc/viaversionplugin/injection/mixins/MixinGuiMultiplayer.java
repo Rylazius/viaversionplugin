@@ -15,10 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package de.florianmichael.viaforge.mixin.impl;
+package net.minusmc.viaversionplugin.injection.mixins;
 
-import de.florianmichael.viaforge.gui.GuiProtocolSelector;
 import net.minecraft.client.gui.*;
+import net.minecraftforge.fml.client.config.GuiSlider;
+import net.raphimc.vialoader.util.VersionEnum;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -29,7 +30,11 @@ public class MixinGuiMultiplayer extends GuiScreen {
 
     @Inject(method = "initGui", at = @At("RETURN"))
     public void hookCustomButton(CallbackInfo ci) {
-        buttonList.add(new GuiButton(1337, this.width - 103, 6, 98, 20, "ViaForge"));
+        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, VersionEnum.SORTED_VERSIONS.values().length - 1, VersionEnum.SORTED_VERSIONS.values().length - 1 - getProtocolIndex(ViaForge.getInstance().getVersion()), false, true,
+            guiSlider -> {
+                ViaForge.targetVersion = VersionEnum.SORTED_VERSIONS.get(guiSlider.getValueInt());
+                this.updatePortalText();
+            }));
     }
 
     @Inject(method = "actionPerformed", at = @At("RETURN"))
