@@ -11,13 +11,15 @@ buildscript {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT"
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
         classpath "com.github.johnrengelman:shadow:4.0.4"
+        classpath ""
     }
 }
 
-apply plugin: "org.jetbrains.kotlin.jvm"
+
 apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: "org.spongepowered.mixin"
 apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "org.jetbrains.kotlin.jvm" version "$kotlin_version"
 apply plugin: "java"
 
 version = "1.8.9-${mod_version}"
