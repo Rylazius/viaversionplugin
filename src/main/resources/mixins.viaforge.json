@@ -10,7 +10,7 @@
   ],
   "verbose": true,
   "client": [
-    "MixinGuiMainMenuGuiMultiplayerGuiServerList",
+    "MixinGuiMultiplayer",
     "MixinMinecraft"
   ]
 }
