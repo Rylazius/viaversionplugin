@@ -29,7 +29,7 @@ public class MixinGuiMultiplayer extends GuiScreen {
 
     @Inject(method = "initGui", at = @At("RETURN"))
     public void hookCustomButton(CallbackInfo ci) {
-        buttonList.add(new GuiButton(1337, 5, 6, 98, 20, "ViaForge"));
+        buttonList.add(new GuiButton(1337, this.width - 103, 6, 98, 20, "ViaForge"));
     }
 
     @Inject(method = "actionPerformed", at = @At("RETURN"))
