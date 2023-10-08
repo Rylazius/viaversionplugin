@@ -11,17 +11,16 @@ buildscript {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT"
         classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
         classpath "com.github.johnrengelman:shadow:4.0.4"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
     }
 }
 
-plugins {
-    id "java"
-    id "idea"
-    id "org.jetbrains.kotlin.jvm" version "1.6.10"
-    id "com.github.johnrengelman.shadow" version "6.1.0"
-    id "net.minecraftforge.gradle.forge"
-    id "org.spongepowered.mixin"
-}
+apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: "org.spongepowered.mixin"
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.jetbrains.kotlin.jvm"
 
 version = "1.8.9-${mod_version}"
 group = "${mod_base_package}.${mod_id}"
