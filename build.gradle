@@ -14,11 +14,14 @@ buildscript {
     }
 }
 
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version"
+}
+
 
 apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: "org.spongepowered.mixin"
 apply plugin: "com.github.johnrengelman.shadow"
-apply plugin: "org.jetbrains.kotlin.jvm" version "$kotlin_version"
 apply plugin: "java"
 
 version = "1.8.9-${mod_version}"
