@@ -49,7 +49,7 @@ configurations {
 }
 
 dependencies {
-    include ("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+    compile ("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
         exclude module: "guava"
         exclude module: "commons-io"
         exclude module: "gson"
@@ -59,7 +59,7 @@ dependencies {
     }
 
     annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT")
-    include "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     
     include "com.viaversion:viaversion:${project.viaversion_version}"
     include "com.viaversion:viabackwards:${project.viabackwards_version}"
@@ -101,31 +101,40 @@ classes.dependsOn(moveResources)
 
 jar {
     manifest.attributes(
-            "MixinConfigs": "mixins.viaforge.json",
-            "tweakClass": "org.spongepowered.asm.launch.MixinTweaker",
-            "TweakOrder": 0,
-            "FMLCorePluginContainsFMLMod": "de.florianmichael.viaforge.mixin.MixinLoader"
+        "MixinConfigs": "mixins.viaforge.json",
+        "tweakClass": "org.spongepowered.asm.launch.MixinTweaker",
+        "TweakOrder": 0,
+        "FMLCorePluginContainsFMLMod": "de.florianmichael.viaforge.mixin.MixinLoader"
     )
 
     enabled = false
 }
 
 mixin {
-    disableRefMapWarning = true
-    defaultObfuscationEnv searge
     add sourceSets.main, "mixins.viaforge.refmap.json"
 }
 
-idea {
-    module {
-        inheritOutputDirs = true
-    }
+shadowJar {
+    archiveClassifier.set("")
+    archiveName = jar.archiveName
+    configurations = [project.configurations.include]
+    compileJava.options.encoding = "UTF-8"
+
+    duplicatesStrategy DuplicatesStrategy.EXCLUDE
+
+    exclude "LICENSE.txt"
+
+    exclude "META-INF/maven/**"
+    exclude "META-INF/versions/**"
+
+    exclude "org/apache/**"
+
+    exclude "native-binaries/*"
+    exclude "META-INF/versions/**"
 }
 
 reobf {
-    shadowJar {
-        mappingType = "SEARGE"
-    }
+    shadowJar {}
 }
 
 configurations {
