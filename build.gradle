@@ -1,19 +1,26 @@
 plugins {
     id "java"
     id "idea"
-    id "org.jetbrains.kotlin.jvm" 
+    id "org.jetbrains.kotlin.jvm" version kotlin_version
     id "com.github.johnrengelman.shadow" version "6.1.0"
     id "net.minecraftforge.gradle.forge"
     id "org.spongepowered.mixin"
 }
 
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = "https://maven.minecraftforge.net/" }
+    maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
+    maven { url = "https://jitpack.io/" }
+}
+
+archivesBaseName = project.archives_base_name
 version = project.mod_version
 group = project.maven_group
-archivesBaseName = project.archives_base_name
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-compileJava.options.encoding = 'UTF-8'
+sourceCompatibility = targetCompatibility = 1.8
+compileJava.options.encoding = "UTF-8"
 
 compileKotlin {
     kotlinOptions {
@@ -21,18 +28,10 @@ compileKotlin {
     }
 }
 
-repositories {
-    mavenCentral()
-    maven { url = "https://maven.minecraftforge.net/" }
-    maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
-    maven { url = "https://repo.viaversion.com" }
-    maven { url = "https://jitpack.io/" }
-}
-
 minecraft {
     version = "1.8.9-11.15.1.2318-1.8.9"
     runDir = "run"
-    mappings = "stable_20"
+    mappings = "stable_22"
     makeObfSourceJar = false
     clientJvmArgs += ["-Dfml.coreMods.load=de.florianmichael.viaforge.mixin.MixinLoader"]
 }
