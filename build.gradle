@@ -13,6 +13,7 @@ repositories {
     maven { url = "https://maven.minecraftforge.net/" }
     maven { url = "https://repo.spongepowered.org/repository/maven-public/" }
     maven { url = "https://jitpack.io/" }
+    mavem { url = "https://repo.viaversion.com/"}
 }
 
 archivesBaseName = project.archives_base_name
