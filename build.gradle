@@ -17,7 +17,7 @@ buildscript {
 plugins {
     id "java"
     id "idea"
-    id "org.jetbrains.kotlin.jvm"
+    id "org.jetbrains.kotlin.jvm" version "1.6.10"
     id "com.github.johnrengelman.shadow"
     id "net.minecraftforge.gradle.forge"
     id "org.spongepowered.mixin"
