@@ -43,7 +43,7 @@ public class MixinGuiMultiplayer extends GuiScreen {
         versions.add(VersionEnum.r1_17_1);
         protocolsSize = versions.size();
 
-        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, protocolsSize - 1 - getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
+        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
             guiSlider -> {
                 ViaForge.targetVersion = versions.get(guiSlider.getValueInt());
                 this.updatePortalText();
