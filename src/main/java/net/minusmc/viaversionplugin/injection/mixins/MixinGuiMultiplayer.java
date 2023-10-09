@@ -32,12 +32,12 @@ import java.util.List;
 public class MixinGuiMultiplayer extends GuiScreen {
 
     private GuiSlider viaSlider;
-    private final List<VersionEnum> versions = VersionEnum.SORTED_VERSIONS;
+    private final List<VersionEnum> versions = VersionEnum.SORTED_VERSIONS.reverse();
     private final int protocolsSize = versions.size();
 
     @Inject(method = "initGui", at = @At("RETURN"))
     public void hookCustomButton(CallbackInfo ci) {
-        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
+        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, protocolsSize - 1 - getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
             guiSlider -> {
                 ViaForge.targetVersion = VersionEnum.SORTED_VERSIONS.get(guiSlider.getValueInt());
                 this.updatePortalText();
