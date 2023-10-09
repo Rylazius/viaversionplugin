@@ -34,7 +34,7 @@ minecraft {
     runDir = "run"
     mappings = "stable_22"
     makeObfSourceJar = false
-    clientJvmArgs += ["-Dfml.coreMods.load=net.minusmc.viaversionplugin.injection.ViaVersionTransformerLoader"]
+    clientJvmArgs += ["-Dfml.coreMods.load=net.minusmc.viaversionplugin.injection.forge.ViaVersionTransformerLoader"]
 }
 
 sourceSets {
@@ -104,7 +104,7 @@ jar {
         "MixinConfigs": "viaforge.forge.mixin.json",
         "tweakClass": "org.spongepowered.asm.launch.MixinTweaker",
         "TweakOrder": 0,
-        "FMLCorePluginContainsFMLMod": "net.minusmc.viaversionplugin.injection.ViaVersionTransformerLoader"
+        "FMLCorePluginContainsFMLMod": "net.minusmc.viaversionplugin.injection.forge.ViaVersionTransformerLoader"
     )
 
     enabled = false

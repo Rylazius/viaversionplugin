@@ -1,16 +1,18 @@
 {
   "required": true,
-  "minVersion": "0.7.5",
+  "minVersion": "0.7.11",
   "compatibilityLevel": "JAVA_8",
-  "package": "net.minusmc.viaversionplugin.injection.mixins",
+  "package": "net.minusmc.viaversionplugin.injection.forge.mixins",
   "refmap": "viaforge.mixins.refmap.json",
   "mixins": [
-    "MixinNetworkManager",
-    "MixinNetworkManager_5"
+    "block.MixinBlock",
+    "block.MixinBlockLadder",
+    "block.MixinBlockLilyPad",
+    "client.MixinMinecraft",
+    "entity.MixinEntity",
+    "entity.MixinEntityLivingBase",
+    "gui.MixinGuiMultiplayer",
+    "network.MixinNetworkManager",
+    "network.MixinNetworkManager_5",
   ],
-  "verbose": true,
-  "client": [
-    "MixinGuiMultiplayer",
-    "MixinMinecraft"
-  ]
 }
