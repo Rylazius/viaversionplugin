@@ -20,27 +20,39 @@ package net.minusmc.viaversionplugin.injection.mixins;
 import net.minecraft.client.gui.*;
 import net.minecraftforge.fml.client.config.GuiSlider;
 import net.raphimc.vialoader.util.VersionEnum;
+import de.florianmichael.viaforge.ViaForge;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.List;
+
 @Mixin(GuiMultiplayer.class)
 public class MixinGuiMultiplayer extends GuiScreen {
 
+    private GuiSlider viaSlider;
+    private final List<VersionEnum> versions = VersionEnum.SORTED_VERSIONS;
+    private final int protocolsSize = versions.size();
     @Inject(method = "initGui", at = @At("RETURN"))
     public void hookCustomButton(CallbackInfo ci) {
-        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, VersionEnum.SORTED_VERSIONS.values().length - 1, VersionEnum.SORTED_VERSIONS.values().length - 1 - getProtocolIndex(ViaForge.getInstance().getVersion()), false, true,
+        viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, protocolsSize - 1 - getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
             guiSlider -> {
                 ViaForge.targetVersion = VersionEnum.SORTED_VERSIONS.get(guiSlider.getValueInt());
                 this.updatePortalText();
-            }));
+            });
+        buttonList.add(viaSlider);
     }
 
-    @Inject(method = "actionPerformed", at = @At("RETURN"))
-    public void handleCustomButtonAction(GuiButton p_actionPerformed_1_, CallbackInfo ci) {
-        if (p_actionPerformed_1_.id == 1337) {
-            mc.displayGuiScreen(new GuiProtocolSelector(this));
+    private void updatePortalText() {
+        if (this.viaSlider == null) return;
+        this.viaSlider.displayString = "Version: " + ViaForge.targetVersion.getName();
+    }
+
+    private int getProtocolIndex(int id) {
+        for (int i = 0; i < protocolsSize; i++) {
+            if (versions.get(i).getVersion() == id) return i;
         }
+        return -1;
     }
 }
