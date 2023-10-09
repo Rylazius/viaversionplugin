@@ -35,16 +35,14 @@ public class MixinGuiMultiplayer extends GuiScreen {
     private final List<VersionEnum> versions = new ArrayList<>();
     private int protocolsSize;
 
-    public MixinGuiMultiplayer() {
+    @Inject(method = "initGui", at = @At("RETURN"))
+    public void hookCustomButton(CallbackInfo ci) {
         versions.add(VersionEnum.r1_8);
         versions.add(VersionEnum.r1_12_2);
         versions.add(VersionEnum.r1_16_4tor1_16_5);
         versions.add(VersionEnum.r1_17_1);
         protocolsSize = versions.size();
-    }
 
-    @Inject(method = "initGui", at = @At("RETURN"))
-    public void hookCustomButton(CallbackInfo ci) {
         buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, protocolsSize - 1 - getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
             guiSlider -> {
                 ViaForge.targetVersion = versions.get(guiSlider.getValueInt());
