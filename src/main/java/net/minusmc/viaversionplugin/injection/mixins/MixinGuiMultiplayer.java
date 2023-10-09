@@ -32,7 +32,7 @@ import java.util.List;
 public class MixinGuiMultiplayer extends GuiScreen {
 
     private GuiSlider viaSlider;
-    private final List<VersionEnum> versions = VersionEnum.SORTED_VERSIONS.reverse();
+    private final List<VersionEnum> versions = VersionEnum.SORTED_VERSIONS;
     private final int protocolsSize = versions.size();
 
     @Inject(method = "initGui", at = @At("RETURN"))
