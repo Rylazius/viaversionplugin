@@ -1,4 +1,4 @@
-package net.minusmc.viaversionplugin.injection.forge.mixins.entity;
+package net.minusmc.viaversionplugin.injection.forge.mixins.block;
 
 import de.florianmichael.viaforge.ViaForge;
 import net.minecraft.block.BlockBush;
