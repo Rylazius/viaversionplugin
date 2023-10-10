@@ -13,6 +13,6 @@
     "entity.MixinEntityLivingBase",
     "gui.MixinGuiMultiplayer",
     "network.MixinNetworkManager",
-    "network.MixinNetworkManager_5",
-  ],
+    "network.MixinNetworkManager_5"
+  ]
 }
