@@ -1,5 +1,6 @@
 package net.minusmc.viaversionplugin.injection.forge.mixins.entity;
 
+import de.florianmichael.viaforge.ViaForge;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockLilyPad;
 import net.minecraft.block.state.IBlockState;
