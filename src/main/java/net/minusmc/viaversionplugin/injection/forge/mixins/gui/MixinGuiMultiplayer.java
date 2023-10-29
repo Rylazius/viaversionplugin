@@ -26,6 +26,7 @@ public class MixinGuiMultiplayer extends GuiScreen {
     @Inject(method = "initGui", at = @At("RETURN"))
     public void hookCustomButton(CallbackInfo ci) {
         versions.add(VersionEnum.r1_8);
+        versions.add(VersionEnum.r1_10);
         versions.add(VersionEnum.r1_12_2);
         versions.add(VersionEnum.r1_16_4tor1_16_5);
         versions.add(VersionEnum.r1_17_1);
