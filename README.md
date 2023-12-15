@@ -1,3 +1,6 @@
-# ViaForge
-## For more information switch to the master branch
-Startup VM Options: -Dfml.coreMods.load=net.minusmc.viaversionplugin.injection.forge.ViaVersionTransformerLoader
+# ViaVersionPlugin for MinusBounce
+This is a plugin that it helps you play on any version
+
+# Credits
+Fyxar (for 1.17 transaction fix)
+ViaVersion

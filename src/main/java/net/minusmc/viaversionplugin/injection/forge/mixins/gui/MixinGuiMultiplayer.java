@@ -1,5 +1,5 @@
 /*
- * This file is part of ViaForge - https://github.com/FlorianMichael/ViaForge
+ * This file is part of ViaMCP - https://github.com/FlorianMichael/ViaMCP
  * Copyright (C) 2021-2023 FlorianMichael/EnZaXD and contributors
 
  */
@@ -8,7 +8,7 @@ package net.minusmc.viaversionplugin.injection.forge.mixins.gui;
 import net.minecraft.client.gui.*;
 import net.minecraftforge.fml.client.config.GuiSlider;
 import net.raphimc.vialoader.util.VersionEnum;
-import de.florianmichael.viaforge.ViaForge;
+import cc.paimonmc.viamcp.ViaMCP;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -32,9 +32,9 @@ public class MixinGuiMultiplayer extends GuiScreen {
         versions.add(VersionEnum.r1_17_1);
         protocolsSize = versions.size();
 
-        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, getProtocolIndex(ViaForge.targetVersion.getVersion()), false, true,
+        buttonList.add(viaSlider = new GuiSlider(1337, width - 104, 8, 98, 20, "Version: ", "", 0, protocolsSize - 1, getProtocolIndex(ViaMCP.targetVersion.getVersion()), false, true,
             guiSlider -> {
-                ViaForge.targetVersion = versions.get(guiSlider.getValueInt());
+                ViaMCP.targetVersion = versions.get(guiSlider.getValueInt());
                 this.updatePortalText();
             }));
         this.updatePortalText();
@@ -42,7 +42,7 @@ public class MixinGuiMultiplayer extends GuiScreen {
 
     private void updatePortalText() {
         if (this.viaSlider == null) return;
-        this.viaSlider.displayString = "Version: " + ViaForge.targetVersion.getName();
+        this.viaSlider.displayString = "Version: " + ViaMCP.targetVersion.getName();
     }
 
     private int getProtocolIndex(int id) {

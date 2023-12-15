@@ -1,5 +1,5 @@
 /*
- * This file is part of ViaForge - https://github.com/FlorianMichael/ViaForge
+ * This file is part of ViaMCP - https://github.com/FlorianMichael/ViaMCP
  * Copyright (C) 2021-2023 FlorianMichael/EnZaXD and contributors
 
  */

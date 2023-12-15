@@ -5,7 +5,7 @@
  */
 package net.minusmc.viaversionplugin.injection.forge.mixins.entity;
 
-import de.florianmichael.viaforge.ViaForge;
+import cc.paimonmc.viamcp.ViaMCP;
 import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,7 +17,7 @@ public abstract class MixinEntity {
 
     @Inject(method = "getCollisionBorderSize", at = @At("HEAD"), cancellable = true)
     private void getCollisionBorderSize(final CallbackInfoReturnable<Float> callbackInfoReturnable) {
-        if (ViaForge.targetVersion.getVersion() >= 107) {
+        if (ViaMCP.targetVersion.getVersion() >= 107) {
             callbackInfoReturnable.setReturnValue(0.0F);
         }
     }

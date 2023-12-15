@@ -1,11 +1,11 @@
 /*
- * This file is part of ViaForge - https://github.com/FlorianMichael/ViaForge
+ * This file is part of ViaMCP - https://github.com/FlorianMichael/ViaMCP
  * Copyright (C) 2021-2023 FlorianMichael/EnZaXD and contributors
 
  */
 package net.minusmc.viaversionplugin.injection.forge.mixins.client;
 
-import de.florianmichael.viaforge.ViaForge;
+import cc.paimonmc.viamcp.ViaMCP;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.GameConfiguration;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,6 +18,6 @@ public class MixinMinecraft {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     public void startVia(GameConfiguration p_i45547_1_, CallbackInfo ci) {
-        ViaForge.start();
+        ViaMCP.start();
     }
 }
