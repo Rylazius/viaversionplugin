@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.ArrayList;
 @Mixin(GuiMultiplayer.class)
 public class MixinGuiMultiplayer extends GuiScreen {
-    @Inject(method = "createButtons",at = @At("HEAD"))
+    @Inject(method = "createButtons", at = @At("HEAD"))
     public void createButtons(CallbackInfo ci){
         buttonList.add(new AsyncVersionSlider(-1, this.width - 104, 8, 98, 20));
     }
