@@ -17,7 +17,7 @@ public abstract class MixinEntityLivingBase extends MixinEntity {
 
     @ModifyConstant(method = "onLivingUpdate", constant = @Constant(doubleValue = 0.005D))
     private double ViaVersion_MovementThreshold(double constant) {
-        if (ViaMCP.targetVersion.getVersion() >= 107)
+        if (ViaMCP.getInstance().getVersion() >= 107)
             return 0.003D;
         return 0.005D;
     }

@@ -5,11 +5,13 @@
  */
 package net.minusmc.viaversionplugin.injection.forge.mixins.network;
 
+import cc.paimonmc.viamcp.ViaMCP;
+import cc.paimonmc.viamcp.handler.CommonTransformer;
+import cc.paimonmc.viamcp.handler.MCPDecodeHandler;
+import cc.paimonmc.viamcp.handler.MCPEncodeHandler;
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.connection.UserConnectionImpl;
 import com.viaversion.viaversion.protocol.ProtocolPipelineImpl;
-import cc.paimonmc.viamcp.ViaMCP;
-import cc.paimonmc.viamcp.ViaMCPVLLegacyPipeline;
 import io.netty.channel.Channel;
 import io.netty.channel.socket.SocketChannel;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,11 +24,11 @@ public class MixinNetworkManager_5 {
 
     @Inject(method = "initChannel", at = @At(value = "TAIL"), remap = false)
     private void onInitChannel(Channel channel, CallbackInfo ci) {
-        if (channel instanceof SocketChannel && ViaMCP.targetVersion != ViaMCP.NATIVE_VERSION) {
+        if (channel instanceof SocketChannel && ViaMCP.getInstance().getVersion() != ViaMCP.PROTOCOL_VERSION) {
             final UserConnection user = new UserConnectionImpl(channel, true);
             new ProtocolPipelineImpl(user);
 
-            channel.pipeline().addLast(new ViaMCPVLLegacyPipeline(user, ViaMCP.targetVersion));
+            channel.pipeline().addBefore("encoder", CommonTransformer.HANDLER_ENCODER_NAME, new MCPEncodeHandler(user)).addBefore("decoder", CommonTransformer.HANDLER_DECODER_NAME, new MCPDecodeHandler(user));
         }
     }
 }

@@ -23,9 +23,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.logging.Logger;
-import net.ccbluex.liquidbounce.utils.MinecraftInstance;
-
-import static net.ccbluex.liquidbounce.utils.MinecraftInstance.mc;
 
 public class ViaMCP {
     public final static int PROTOCOL_VERSION = 47;

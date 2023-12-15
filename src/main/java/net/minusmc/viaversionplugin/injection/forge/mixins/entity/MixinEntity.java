@@ -17,7 +17,7 @@ public abstract class MixinEntity {
 
     @Inject(method = "getCollisionBorderSize", at = @At("HEAD"), cancellable = true)
     private void getCollisionBorderSize(final CallbackInfoReturnable<Float> callbackInfoReturnable) {
-        if (ViaMCP.targetVersion.getVersion() >= 107) {
+        if (ViaMCP.getInstance().getVersion() >= 107) {
             callbackInfoReturnable.setReturnValue(0.0F);
         }
     }
