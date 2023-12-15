@@ -66,10 +66,9 @@ dependencies {
     include "com.viaversion:viarewind-universal:${project.viarewind_version}"
     include "org.yaml:snakeyaml:${project.snake_yml_version}"
 
-    include "net.raphimc:ViaLoader:${project.vialoader_version}"
     include "org.slf4j:slf4j-api:${project.slf4j_version}"
 
-    compile files('libs/minusbounce-20231001.jar')
+    compile "com.github.MinusMCNetwork:MinusBounce:082af77b18"
 }
 
 processResources {
