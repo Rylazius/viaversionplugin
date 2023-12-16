@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class MCPRewindLoader implements ViaRewindPlatform {
     public MCPRewindLoader(final File file) {
         final ViaRewindConfigImpl conf = new ViaRewindConfigImpl(file.toPath().resolve("ViaRewind").resolve("config.yml").toFile());
-        conf.reloadConfig();
+        conf.reload();
         this.init(conf);
     }
 

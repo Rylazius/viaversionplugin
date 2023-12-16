@@ -133,10 +133,10 @@ public class MCPViaPlatform implements ViaPlatform<UUID> {
         return config;
     }
 
-    @Override
-    public ConfigurationProvider getConfigurationProvider() {
-        return config;
-    }
+    // @Override
+    // public ConfigurationProvider getConfigurationProvider() {
+    //     return config;
+    // }
 
     @Override
     public File getDataFolder() {

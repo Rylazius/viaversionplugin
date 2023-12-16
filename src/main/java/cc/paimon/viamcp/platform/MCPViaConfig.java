@@ -13,7 +13,7 @@ public class MCPViaConfig extends AbstractViaConfig {
 
     public MCPViaConfig(final File configFile) {
         super(configFile);
-        reloadConfig();
+        this.reload();
     }
 
     @Override
