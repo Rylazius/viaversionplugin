@@ -16,7 +16,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package de.florianmichael.viaforge.mixin.impl;
+package net.minusmc.viaversionplugin.injection.forge.mixins.network;
 
 import de.florianmichael.vialoadingbase.netty.event.CompressionReorderEvent;
 import io.netty.channel.Channel;
