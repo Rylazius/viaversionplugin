@@ -101,7 +101,7 @@ classes.dependsOn(moveResources)
 
 jar {
     manifest.attributes(
-        "MixinConfigs": "viaforge.forge.mixin.json",
+        "MixinConfigs": "viaversionplugin.forge.mixin.json",
         "tweakClass": "org.spongepowered.asm.launch.MixinTweaker",
         "TweakOrder": 0,
         "FMLCorePluginContainsFMLMod": "net.minusmc.viaversionplugin.injection.forge.ViaVersionTransformerLoader"
@@ -111,7 +111,7 @@ jar {
 }
 
 mixin {
-    add sourceSets.main, "viaforge.mixins.refmap.json"
+    add sourceSets.main, "viaversionplugin.mixins.refmap.json"
 }
 
 shadowJar {

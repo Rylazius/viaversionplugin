@@ -17,7 +17,7 @@ public class ViaVersionTransformerLoader implements IFMLLoadingPlugin {
 
     public ViaVersionTransformerLoader() {
         MixinBootstrap.init();
-        Mixins.addConfiguration("viaforge.forge.mixin.json");
+        Mixins.addConfiguration("viaversionplugin.forge.mixin.json");
         MixinEnvironment.getDefaultEnvironment().setSide(MixinEnvironment.Side.CLIENT);
     }
 

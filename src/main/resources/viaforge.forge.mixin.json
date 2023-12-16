@@ -3,7 +3,7 @@
   "minVersion": "0.7.11",
   "compatibilityLevel": "JAVA_8",
   "package": "net.minusmc.viaversionplugin.injection.forge.mixins",
-  "refmap": "viaforge.mixins.refmap.json",
+  "refmap": "viaversionplugin.mixins.refmap.json",
   "mixins": [
     "block.MixinBlock",
     "block.MixinBlockLadder",
