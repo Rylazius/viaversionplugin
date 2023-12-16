@@ -5,8 +5,8 @@
  */
 package net.minusmc.viaversionplugin.injection.forge.mixins.client;
 
-import cc.paimonmc.viamcp.ViaMCP;
-import cc.paimonmc.viamcp.utils.AttackOrder;
+import de.florianmichael.viamcp.ViaMCP;
+import de.florianmichael.viamcp.fixes.AttackOrder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.PlayerControllerMP;
@@ -32,7 +32,7 @@ public class MixinMinecraft {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     public void startVia(GameConfiguration p_i45547_1_, CallbackInfo ci) {
-        ViaMCP.staticInit();
+        ViaMCP.create();
     }
 
     @Redirect(method = "clickMouse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/EntityLivingBase;swingItem()V"))

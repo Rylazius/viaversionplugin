@@ -5,10 +5,9 @@
  */
 package net.minusmc.viaversionplugin.injection.forge.mixins.network;
 
-import cc.paimonmc.viamcp.ViaMCP;
-import cc.paimonmc.viamcp.handler.CommonTransformer;
-import cc.paimonmc.viamcp.handler.MCPDecodeHandler;
-import cc.paimonmc.viamcp.handler.MCPEncodeHandler;
+import de.florianmichael.viamcp.ViaMCP;
+import de.florianmichael.vialoadingbase.ViaLoadingBase;
+import de.florianmichael.viamcp.MCPVLBPipeline;
 import com.viaversion.viaversion.api.connection.UserConnection;
 import com.viaversion.viaversion.connection.UserConnectionImpl;
 import com.viaversion.viaversion.protocol.ProtocolPipelineImpl;
@@ -24,11 +23,11 @@ public class MixinNetworkManager_5 {
 
     @Inject(method = "initChannel", at = @At(value = "TAIL"), remap = false)
     private void onInitChannel(Channel channel, CallbackInfo ci) {
-        if (channel instanceof SocketChannel && ViaMCP.getInstance().getVersion() != ViaMCP.PROTOCOL_VERSION) {
+        if (channel instanceof SocketChannel && ViaLoadingBase.getInstance().getTargetVersion().getVersion() != ViaMCP.NATIVE_VERSION) {
             final UserConnection user = new UserConnectionImpl(channel, true);
             new ProtocolPipelineImpl(user);
-
-            channel.pipeline().addBefore("encoder", CommonTransformer.HANDLER_ENCODER_NAME, new MCPEncodeHandler(user)).addBefore("decoder", CommonTransformer.HANDLER_DECODER_NAME, new MCPDecodeHandler(user));
+            
+            channel.pipeline().addLast(new MCPVLBPipeline(user));
         }
     }
 }
