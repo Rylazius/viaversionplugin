@@ -44,6 +44,7 @@ public class ViaMCP {
                 getAsyncVersionSlider().setVersion(comparableProtocolVersion.getVersion());
             }
         }).build();
+        fixTransactions();
     }
 
     private void fixTransactions() {
