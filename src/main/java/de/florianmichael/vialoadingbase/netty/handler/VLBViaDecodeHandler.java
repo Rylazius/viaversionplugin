@@ -58,35 +58,6 @@ public class VLBViaDecodeHandler extends MessageToMessageDecoder<ByteBuf> {
         }
 
         ByteBuf transformedBuf = ctx.alloc().buffer().writeBytes(bytebuf);
-        
-        ByteBuf raw = transformedBuf.copy();
-        
-        boolean cancel = false;
-        
-        if(ViaLoadingBase.getInstance().getTargetVersion().isNewerThanOrEqualTo(ProtocolVersion.v1_17)) {
-        	try {                	
-            	if(Type.VAR_INT.read(raw) == ClientboundPackets1_17_1.PING.getId()) {
-            		int id = Type.INT.read(raw);
-            		
-            		Minecraft.getMinecraft().addScheduledTask(() -> {
-            			PacketWrapper wrapper = PacketWrapper.create(ServerboundPackets1_17.PONG, user);
-                		wrapper.write(Type.INT, id);
-                		try {
-    						wrapper.sendToServer(Protocol1_16_4To1_17.class);
-    					} catch (Exception e) {
-    						e.printStackTrace();
-    					}
-            		}) ;
-            		
-            		cancel = true;
-            	}
-            } finally {
-            	raw.release();
-            }
-        }
-        
-        if(cancel) return;
-        
         try {
             user.transformIncoming(transformedBuf, CancelDecoderException::generate);
 

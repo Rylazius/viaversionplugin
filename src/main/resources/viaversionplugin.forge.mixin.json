@@ -13,7 +13,10 @@
     "entity.MixinEntityLivingBase",
     "gui.MixinGuiMultiplayer",
     "item.MixinItemBlock",
+    "network.MixinNetHandlerPlayClient",
     "network.MixinNetworkManager",
     "network.MixinNetworkManager_5"
+    "packets.MixinC0FPacketConfirmTransaction",
+    "packets.MixinS32PacketConfirmTransaction"
   ]
 }
