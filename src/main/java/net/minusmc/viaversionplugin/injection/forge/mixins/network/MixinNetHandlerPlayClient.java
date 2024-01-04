@@ -39,6 +39,8 @@ public class MixinNetHandlerPlayClient {
         Container container = null;
         EntityPlayer entityplayer = this.gameController.thePlayer;
 
+        if (entityplayer == null) return;
+
         if (packetIn.getWindowId() == 0)
         {
             container = entityplayer.inventoryContainer;
