@@ -15,7 +15,7 @@
     "item.MixinItemBlock",
     "network.MixinNetHandlerPlayClient",
     "network.MixinNetworkManager",
-    "network.MixinNetworkManager_5"
+    "network.MixinNetworkManager_5",
     "packets.MixinC0FPacketConfirmTransaction",
     "packets.MixinS32PacketConfirmTransaction"
   ]
