@@ -1,10 +1,8 @@
-name: Via Version Plugin
+name: Release build
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -24,8 +22,10 @@ jobs:
           job-id: jdk8
           arguments: build --no-build-cache
           gradle-version: wrapper
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+      - name: Upload releases
+        uses: softprops/action-gh-release@v1
         with:
-          name: ViaVersionPlugin
-          path: build/libs/viaversionplugin-20231008.jar
+          files: |
+            build/libs/viaversionplugin-0.2.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
