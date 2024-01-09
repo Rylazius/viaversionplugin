@@ -63,8 +63,7 @@ dependencies {
     
     include "com.viaversion:viaversion:${project.viaversion_version}"
     include "com.viaversion:viabackwards:${project.viabackwards_version}"
-    include "com.viaversion:viarewind-all:${project.viarewind_version}"
-    //include files("libs/ViaRewind-2.0.3-AnimationFixed.jar")
+    include "com.viaversion:viarewind-common:${project.viarewind_version}"
     include "org.yaml:snakeyaml:${project.snake_yml_version}"
 
     include "org.slf4j:slf4j-api:${project.slf4j_version}"

@@ -1,6 +1,6 @@
 /*
  * This file is part of ViaMCP - https://github.com/FlorianMichael/ViaMCP
- * Copyright (C) 2020-2023 FlorianMichael/EnZaXD and contributors
+ * Copyright (C) 2020-2024 FlorianMichael/EnZaXD <florian.michael07@gmail.com> and contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package de.florianmichael.viamcp;
 
 import com.viaversion.viabackwards.protocol.protocol1_16_4to1_17.Protocol1_16_4To1_17;
@@ -44,6 +45,8 @@ public class ViaMCP {
                 getAsyncVersionSlider().setVersion(comparableProtocolVersion.getVersion());
             }
         }).build();
+
+        // Add this line if you implement the transaction fixes into the game code
         fixTransactions();
     }
 

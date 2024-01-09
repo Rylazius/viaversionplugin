@@ -30,12 +30,13 @@ public class MixinNetHandlerPlayClient {
 
 	@Overwrite
 	public void handleConfirmTransaction(S32PacketConfirmTransaction packetIn) {
-		if (ViaLoadingBase.getInstance().getTargetVersion().isNewerThanOrEqualTo(ProtocolVersion.v1_17)) {
-		    this.addToSendQueue(new C0FPacketConfirmTransaction(packetIn.getWindowId(), (short) 0, false));
-		    return;
-		}
-
         PacketThreadUtil.checkThreadAndEnqueue(packetIn, (NetHandlerPlayClient) (Object) this, this.gameController);
+        
+        if (ViaLoadingBase.getInstance().getTargetVersion().isNewerThanOrEqualTo(ProtocolVersion.v1_17)) {
+            this.addToSendQueue(new C0FPacketConfirmTransaction(packetIn.getWindowId(), (short) 0, false));
+            return;
+        }
+
         Container container = null;
         EntityPlayer entityplayer = this.gameController.thePlayer;
 
