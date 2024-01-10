@@ -67,8 +67,6 @@ dependencies {
     include "org.yaml:snakeyaml:${project.snake_yml_version}"
 
     include "org.slf4j:slf4j-api:${project.slf4j_version}"
-
-    compile "com.github.MinusMCNetwork:MinusBounce:082af77b18"
 }
 
 processResources {
